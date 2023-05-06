@@ -8,40 +8,33 @@ const params = Astro.url.searchParams.getAll("nombre");
 
 if (!isFran) {
   return Astro.redirect("/");
-}else if(params.length){
+} else if (params.length) {
   return Astro.redirect(`/user/${user}`);
 }
-
 ---
+
 {console.log(params)}
 <Layout title="Welcome to OnlyFrans.">
   <main>
-    <h1>
-      Welcome <span class="text-gradient">{user}</span>
-    </h1>
-    <video class="video" width="300" autoplay loop>
-      <source src="/FRAAN.mp4" type="video/mp4">
-  </video>
+    <section class="header">
+      <h1>
+        Welcome <span class="text-gradient">{user}</span>
+      </h1>
+    </section>
+    <section class="content">
+      <video class="video" width="300" autoplay loop>
+        <source src="/FRAAN.mp4" type="video/mp4" />
+      </video>
+    </section>
+    <footer class="footer">Creado con 🩴 por Fran</footer>
   </main>
 </Layout>
 
 <style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 60ch;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-  }
   h1 {
     font-size: 3rem;
     font-weight: 800;
     margin: 0;
-  }
-  .video{
-    padding-top: 100px;
   }
   .text-gradient {
     background-image: var(--accent-gradient);
