@@ -4,12 +4,17 @@ import Layout from "../../layouts/Layout.astro";
 const { user } = Astro.params;
 const regex = new RegExp(/\b[Ff][Rr][Aa][Nn]\w*/);
 const isFran = regex.test(user!);
+const params = Astro.url.searchParams.getAll("nombre");
+
 if (!isFran) {
   return Astro.redirect("/");
+}else if(params.length){
+  return Astro.redirect(`/user/${user}`);
 }
----
 
-<Layout title="Welcome to Astro.">
+---
+{console.log(params)}
+<Layout title="Welcome to OnlyFrans.">
   <main>
     <h1>
       Welcome <span class="text-gradient">{user}</span>
