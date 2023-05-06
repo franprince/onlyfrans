@@ -3,17 +3,12 @@ import Layout from "../../layouts/Layout.astro";
 
 const { user } = Astro.params;
 const regex = new RegExp(/\b[Ff][Rr][Aa][Nn]\w*/);
-const isFran = regex.test(user!);
-const params = Astro.url.searchParams.getAll("nombre");
+const notFran = user && !regex.test(user);
 
-if (!isFran) {
+if (notFran) {
   return Astro.redirect("/");
-} else if (params.length) {
-  return Astro.redirect(`/user/${user}`);
 }
 ---
-
-{console.log(params)}
 <Layout title="Welcome to OnlyFrans.">
   <main>
     <section class="header">
@@ -29,4 +24,3 @@ if (!isFran) {
     <footer class="footer">Creado con 🩴 por Fran</footer>
   </main>
 </Layout>
-
