@@ -22,7 +22,7 @@ const Form = () => {
         />
       </label>
       <label></label>
-      <button className="form-button" type="submit">Submit</button>
+      <button className="form-button" type="submit">Entrar</button>
     </form>
   );
 };
